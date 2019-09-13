@@ -1,4 +1,4 @@
-# Nova Menu Builder Using with Placeholde and Category.
+# Nova Menu Builder Using with Placeholder and Category.
 
 This tool allows you to create menus in Laravel Nova
 
