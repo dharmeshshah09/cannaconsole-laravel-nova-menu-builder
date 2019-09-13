@@ -37,7 +37,7 @@ class CreateMenusTable extends Migration
             $table->timestamps();
             $table->foreign('menu_id')->references('id')->on('menus')->onUpdate('cascade')->onDelete('cascade');
             $table->string('placeholder')->nullable();
-            $table->string('store_id')->nullable();
+            $table->string('category')->nullable();
             $table->uuid('store_id')->nullable();
         });
     }
