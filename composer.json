@@ -1,6 +1,6 @@
 {
     "name": "dharmeshshah09/cannaconsole-laravel-nova-menu-builder",
-    "description": "Menu Builder Tool for Laravel Nova.",
+    "description": "Menu Builder Tool for Laravel Nova with placeholder and category.",
     "keywords": [
         "laravel",
         "nova",
