@@ -8,6 +8,8 @@ use Infinety\MenuBuilder\Http\Models\Menu;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Resource;
+use Outhebox\NovaHiddenField\HiddenField;
+use DB;
 
 class MenuResource extends Resource
 {
@@ -63,6 +65,13 @@ class MenuResource extends Resource
             })->asHtml()->hideWhenCreating()->hideWhenUpdating(),
 
             BuilderResourceTool::make(),
+
+             HiddenField::make('Store', 'store_id')
+                ->hideFromIndex()
+                ->hideFromDetail()
+                ->default($this->get_store_id())->readonly(function ($request) {
+                    return $request->isUpdateOrUpdateAttachedRequest();
+                }),  
         ];
     }
 
@@ -139,5 +148,12 @@ class MenuResource extends Resource
     public static function uriKey()
     {
         return 'menu-builder';
+    }
+
+    public static function get_store_id()
+    {
+        $domain = parse_url(request()->root())['host']; 
+        $store = DB::table('stores')->select('id')->where('domain',$domain)->first();
+        return $store->id;
     }
 } 
