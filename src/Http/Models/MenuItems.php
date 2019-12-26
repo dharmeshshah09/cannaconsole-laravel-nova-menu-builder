@@ -34,7 +34,7 @@ class MenuItems extends Model
     /**
      * @var array
      */
-    protected $appends = ['link', 'type', 'enabledClass'];
+    //protected $appends = ['link', 'type', 'enabledClass'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -66,6 +66,7 @@ class MenuItems extends Model
     {
         return $this->hasMany(self::class, 'parent_id')
             ->orderBy('order', 'asc')
+            ->select('id','name','parent_id','url','category','placeholder')
             ->with('children');
     }
 
