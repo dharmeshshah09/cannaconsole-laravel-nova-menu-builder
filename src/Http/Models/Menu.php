@@ -62,6 +62,7 @@ class Menu extends Model
             ->orderby('parent_id')
             ->orderby('order')
             ->orderby('name')
+            ->select('id','name','parent_id','url','category','placeholder')
             ->get();
     }
 
